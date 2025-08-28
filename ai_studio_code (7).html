@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunión Coordinadores UBPD - Red de Apoyo 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+        :root {
+            /* Colores institucionales UBPD (Verdes y Morados) */
+            --primary-color: #6a0572; /* Morado Oscuro principal (tipo berenjena) */
+            --secondary-color: #8e44ad; /* Morado medio */
+            --accent-color: #27ae60; /* Verde brillante para acentos y éxito */
+            --light-green: #d4edda; /* Verde muy claro para fondos suaves */
+            --dark-text: #343a40; /* Texto oscuro general */
+            --heading-color: #4a0050; /* Morado aún más oscuro para títulos */
+            --line-color: #e9ecef; /* Línea divisoria (mantener neutral) */
+            --card-bg: #ffffff; /* Fondo de tarjeta */
+            --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra suave */
+            --gradient-start: #6a0572; /* Inicio del gradiente morado oscuro */
+            --gradient-end: #8e44ad;   /* Fin del gradiente morado medio */
+            --light-purple-bg: #f3e5f5; /* Fondo muy claro de morado */
+            --medium-purple-bg: #e1bee7; /* Fondo medio de morado para tarjetas */
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-purple-bg); /* Fondo general morado claro */
+            color: var(--dark-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--heading-color);
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: var(--light-purple-bg); /* Fondo de lista morado claro */
+            margin-bottom: 10px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        ul li:hover {
+            background-color: var(--medium-purple-bg); /* Un poco más oscuro al pasar el mouse */
+            transform: translateX(5px);
+        }
+
+        ul li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .team-card {
+            background-color: var(--light-purple-bg); /* Fondo de tarjeta morado claro */
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--accent-color);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .team-card h4 {
+            color: var(--primary-color);
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .team-card p {
+            color: var(--secondary-color);
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        .team-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto; /* Scroll para listas largas */
+        }
+
+        .team-card ul::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .team-card ul::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .team-card ul::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .team-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--line-color);
+            font-size: 0.95em;
+            color: var(--dark-text);
+            border-left: none;
+            background-color: transparent;
+        }
+        .team-card ul li:last-child {
+            border-bottom: none;
+        }
+        .team-card ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            margin-right: 8px;
+        }
+
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--light-green) 0%, #a2d9ab 100%); /* Gradiente verde */
+            color: var(--dark-text);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--accent-color);
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.03);
+        }
+
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--heading-color); /* Número en morado oscuro */
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .geo-distribution {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .geo-item {
+            background-color: var(--light-purple-bg); /* Fondo morado claro */
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--medium-purple-bg);
+            transition: transform 0.2s ease;
+        }
+        .geo-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .geo-item strong {
+            display: block;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .geo-item span {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--accent-color); /* Número en verde */
+        }
+
+        .roles-description {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .role-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light-green); /* Verde claro para roles */
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--accent-color); /* Borde verde */
+            transition: transform 0.2s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .role-card h4 {
+            color: var(--heading-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .role-card h4::before {
+            content: '★'; /* Icono de estrella */
+            color: var(--primary-color); /* Estrella en morado */
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .role-card ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        .role-card ul li {
+            border-left: none;
+            background-color: transparent;
+            padding: 5px 0;
+            font-size: 1em;
+            color: var(--dark-text);
+        }
+         .role-card ul li::before {
+            content: '';
+         }
+
+        .orientation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .orientation-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-bottom: 4px solid var(--primary-color); /* Borde morado */
+            transition: transform 0.2s ease;
+            text-align: center;
+        }
+
+        .orientation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .orientation-card h4 {
+            color: var(--heading-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .orientation-card h4::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color); /* Línea en verde */
+            border-radius: 5px;
+        }
+
+        .orientation-card p {
+            font-size: 1em;
+            color: var(--dark-text);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--primary-color); /* Footer en morado oscuro */
+            color: white;
+            margin-top: 40px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+        }
+
+        footer a {
+            color: var(--accent-color); /* Enlace en verde */
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .weekly-meeting-info {
+            background-color: #f7e0ff; /* Morado muy claro para alerta */
+            border-left: 5px solid var(--secondary-color); /* Borde morado */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: var(--dark-text);
+            display: flex;
+            align-items: center;
+        }
+
+        .weekly-meeting-info::before {
+            content: '💡';
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section, .team-card, .stat-card, .geo-item, .role-card, .orientation-card {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+        section:nth-child(7) { animation-delay: 0.7s; }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .team-grid, .stats-grid, .geo-distribution, .orientation-grid {
+                grid-template-columns: 1fr;
+            }
+            .role-card {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Reunión de Coordinadores</h1>
+            <p>Estrategia Red de Apoyo Operativo para la Búsqueda 2025</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Agenda Metodológica</h2>
+            <ul>
+                <li>Presentación equipos de trabajo</li>
+                <li>Balance contratos Red de Apoyo</li>
+                <li>Roles en la ejecución de los contratos estrategia Red de Apoyo</li>
+                <li>Orientaciones frente al acompañamiento técnico, jurídico y administrativo</li>
+                <li>Socialización avances estrategia de seguimiento</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Equipos de Trabajo: Apoyando la Misión</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h4>Equipo Técnico, Jurídico y Administrativo</h4>
+                    <p>Carlos Zapata, Geraldine Peña y Zaidy Arenas</p>
+                    <ul>
+                        <li>Gloria Elcy Quintero Giraldo</li>
+                        <li>Mónica Cecilia Rojas Lopera</li>
+                        <li>Mayra Alejandra Romero Araujo</li>
+                        <li>Luz Marina Rodríguez Baylon</li>
+                        <li>Catherine Johana Ramirez Gomez</li>
+                        <li>Maryuriz Rodríguez Caballero</li>
+                        <li>Paola Andrea Perilla Guerra</li>
+                        <li>Alfredo Hernández Pinzón</li>
+                    </ul>
+                </div>
+
+                <div class="team-card">
+                    <h4>Equipo Técnico, Jurídico y Administrativo</h4>
+                    <p>Oscar Garzón, Ketty Halaby y Hasbleidy Beltrán</p>
+                    <ul>
+                        <li>Luis Alberto Salazar Ortega</li>
+                        <li>Eliecer Antonio Sierra Peña</li>
+                        <li>Fernel Felipe Ferrer Fernandez</li>
+                        <li>Hannia Liz Marquez Restrepo</li>
+                        <li>Sergio Andres Vega Garcia</li>
+                        <li>Blanca Lilia Molina Garzón</li>
+                        <li>Isabel Cristina Pardo Gonzalez</li>
+                        <li>Leticia Maria Lopez Quintero</li>
+                        <li>Carmen Sandrith Jimenez Gomez</li>
+                    </ul>
+                </div>
+
+                <div class="team-card">
+                    <h4>Equipo Técnico, Jurídico y Administrativo</h4>
+                    <p>María Anacona, Fernanda Moreno y David Prieto</p>
+                    <ul>
+                        <li>Daniela Andrea Mostacilla</li>
+                        <li>Yenifer Espitia Espitia</li>
+                        <li>Jose Evaristo Domico Domico</li>
+                        <li>Daniela Ospina Herrera</li>
+                        <li>Deicy Viviana Osorio Ortiz</li>
+                        <li>Yuli Solanyi Sanchez Guisao</li>
+                        <li>Viviana Paola Arevalo Nastacuas</li>
+                        <li>Luisa Maria Lazaro Garcia</li>
+                        <li>Rosa Jackeline Macuace</li>
+                        <li>Fredy Paiguaje Ortiz</li>
+                        <li>Argenis Montenegro Cuchimba</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Contratos Convocatoria Red de Apoyo Operativo para la Búsqueda 2025</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">28</div>
+                    <div class="label">PERSONAS NATURALES Contratadas</div>
+                </div>
+            </div>
+
+            <h3>Distribución Geográfica de Contratos</h3>
+            <div class="geo-distribution">
+                <div class="geo-item"><strong>ANTIOQUIA</strong> <span>2</span></div>
+                <div class="geo-item"><strong>CAUCA</strong> <span>1</span></div>
+                <div class="geo-item"><strong>CESAR</strong> <span>1</span></div>
+                <div class="geo-item"><strong>CÓRDOBA</strong> <span>2</span></div>
+                <div class="geo-item"><strong>EJE CAFETERO</strong> <span>3</span></div>
+                <div class="geo-item"><strong>GUAVIARE</strong> <span>3</span></div>
+                <div class="geo-item"><strong>MAGDALENA</strong> <span>1</span></div>
+                <div class="geo-item"><strong>PACIFICO NARIÑENSE</strong> <span>1</span></div>
+                <div class="geo-item"><strong>NORTE DE SANTANDER</strong> <span>1</span></div>
+                <div class="geo-item"><strong>PUTUMAYO</strong> <span>3</span></div>
+                <div class="geo-item"><strong>SANTANDER</strong> <span>1</span></div>
+                <div class="geo-item"><strong>SUCRE</strong> <span>4</span></div>
+                <div class="geo-item"><strong>TOLIMA</strong> <span>3</span></div>
+                <div class="geo-item"><strong>URABÁ REGIÓN</strong> <span>2</span></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Roles en la Ejecución Contractual / Supervisión Compartida</h2>
+            <div class="roles-description">
+                <div class="role-card">
+                    <h4>Equipo Central</h4>
+                    <ul>
+                        <li>Acompañamiento técnico, jurídico y administrativo</li>
+                        <li>Validación de los productos</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <h4>Grupos Internos de Trabajo (GIT)</h4>
+                    <ul>
+                        <li>Acompañamiento y orientación</li>
+                        <li>Validación de los productos</li>
+                        <li>Proporcionará los medios y/o recursos que se determinen para la adecuada ejecución del contrato</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="weekly-meeting-info">
+                En el marco del seguimiento se llevarán a cabo reuniones semanales con el propósito de conocer el avance de las propuestas de búsqueda.
+            </div>
+        </section>
+
+        <section>
+            <h2>Orientaciones: Acompañamiento Técnico, Jurídico y Administrativo</h2>
+            <div class="orientation-grid">
+                <div class="orientation-card">
+                    <h4>1. Acompañamiento Técnico</h4>
+                    <p>Implica todo lo relacionado con la adecuada orientación para la realización de los productos. Este ejercicio se realizará de manera concertada con el GIT.</p>
+                </div>
+                <div class="orientation-card">
+                    <h4>2. Acompañamiento Jurídico</h4>
+                    <p>Realizará las alertas relacionadas con el cumplimiento de las obligaciones, modificaciones contractuales y todo tipo de acciones que requieran el abordaje legal para la oportuna ejecución y protección del rol de la supervisión.</p>
+                </div>
+                <div class="orientation-card">
+                    <h4>3. Acompañamiento Administrativo</h4>
+                    <p>Encargado de gestionar acciones relativas a la presentación y verificación de las cuentas de cobro, envío de correos informativos entre otras.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Visítanos en: <a href="http://www.unidadbusqueda.gov.co" target="_blank">www.unidadbusqueda.gov.co</a></p>
+            <p>¡Gracias por tu compromiso!</p>
+        </div>
+    </footer>
+</body>
+</html>
